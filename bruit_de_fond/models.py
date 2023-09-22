@@ -1,16 +1,6 @@
 from django.db import models
 from analyse.models import Analyse
-
-class Mesure(models.Model):
-    temps_de_comptage = models.DateTimeField()
-    aire_nette = models.FloatField()
-    incertitude_aire_nette = models.FloatField()
-    taux_de_comptage = models.FloatField()
-    incertitude_taux_de_comptage = models.FloatField()
-
-    class Meta:
-        abstract = True
-
+from models.mesure import Mesure
 
 class BruitDeFond(Mesure):
     analyse = models.ForeignKey(Analyse, on_delete=models.CASCADE)
