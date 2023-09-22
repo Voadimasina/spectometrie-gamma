@@ -11,12 +11,12 @@ urlpatterns = [
     path('update/<int:client_id>/', update_client, name='update'),
     path('delete/<int:client_id>/', delete_client, name='delete'),
      path(
-        'api/',
+        'api',
         ClientListCreateView.as_view(),
         name='client-list-create'
     ),
     path(
-        'api/<int:pk>/',
+        'api/<int:pk>',
         ClientRetrieveUpdateDestroyView.as_view(),
         name='client-retrieve-update-destroy'
     ),

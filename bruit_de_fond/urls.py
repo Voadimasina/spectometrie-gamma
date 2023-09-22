@@ -11,12 +11,12 @@ urlpatterns = [
     path('update/<int:bruitdefond_id>/', update_bruitdefond, name='update'),
     path('delete/<int:bruitdefond_id>/', delete_bruitdefond, name='delete'),
     path(
-        'api/',
+        'api',
         BruitDeFondListCreateView.as_view(),
         name='bruitdefond-list-create'
     ),
     path(
-        'api/<int:pk>/',
+        'api/<int:pk>',
         BruitDeFondRetrieveUpdateDestroyView.as_view(),
         name='bruitdefond-retrieve-update-destroy'
     ),
