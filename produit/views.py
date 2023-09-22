@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Produit
-from .forms import ProduitForm  # Vous devrez créer ce formulaire
+from .forms import ProduitForm
 
 def list_produits(request):
     produits = Produit.objects.all()

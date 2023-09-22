@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import create_etalon, delete_etalon, detail_etalon, list_etalons, update_etalon
-from .api import EtalonListCreateView, EtalonDetailView
+from .api import EtalonListCreateView, EtalonRetrieveUpdateDestroyView
 
 app_name = 'etalon'
 
@@ -17,7 +17,7 @@ urlpatterns = [
     ),
     path(
         'api/<int:pk>',
-        EtalonDetailView.as_view(),
+        EtalonRetrieveUpdateDestroyView.as_view(),
         name='etalon-detail'
     ),
 ]

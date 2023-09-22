@@ -10,5 +10,5 @@ class BruitDeFondForm(forms.ModelForm):
             'incertitude_aire_nette',
             'taux_de_comptage',
             'incertitude_taux_de_comptage',
-            'analyse',  # Ajoutez le champ d'analyse si nécessaire
+            'analyse',
         ]
