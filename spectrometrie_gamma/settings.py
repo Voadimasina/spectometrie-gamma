@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'prelevement.apps.PrelevementConfig',
     'bruit_de_fond.apps.BruitDeFondConfig',
     'rest_framework',
-    # 'resultat.apps.ResultatConfig',
+    'resultat.apps.ResultatConfig',
 ]
 
 MIDDLEWARE = [
