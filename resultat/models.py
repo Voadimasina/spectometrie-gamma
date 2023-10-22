@@ -9,8 +9,8 @@ class Resultat(models.Model):
     etalon = models.ForeignKey(Etalon, on_delete=models.CASCADE)
     prelevement = models.ForeignKey(Prelevement, on_delete=models.CASCADE)
     bruit_de_fond = models.ForeignKey(BruitDeFond, on_delete=models.CASCADE)
-    activite = models.FloatField(null=True, blank=True) # Aech
-    incertitude_activite = models.FloatField(null=True, blank=True)#bAech
+    activite = models.FloatField(null=True, blank=True) 
+    incertitude_activite = models.FloatField(null=True, blank=True)
     teneur = models.FloatField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
@@ -41,30 +41,47 @@ class Resultat(models.Model):
         temps_comptage_prelevement = self.prelevement.temps_de_comptage
 
         temps_comptage_bf = self.bruit_de_fond.temps_de_comptage
+        
+        # -------------
 
         ###Valeure nette aire nette:
-        aire_nette_Etalon = aire_nette_etalon - aire_nette_bf
+        # aire_nette_Etalon = aire_nette_etalon - aire_nette_bf
         
-        aire_nette_Prelevement = aire_nette_prelevement - aire_nette_bf
+        # aire_nette_Prelevement = aire_nette_prelevement - aire_nette_bf
 
-        incertitude_aire_nette_Etalon = sqrt((incertitude_aire_nette_etalon ** 2) + (incertitude_aire_bf ** 2))
+        # incertitude_aire_nette_Etalon = sqrt((incertitude_aire_nette_etalon ** 2) + (incertitude_aire_bf ** 2))
 
-        incertitude_aire_nette_Prelevement = sqrt((incertitude_aire_nette_prelevement ** 2) + (incertitude_aire_bf ** 2))
+        # incertitude_aire_nette_Prelevement = sqrt((incertitude_aire_nette_prelevement ** 2) + (incertitude_aire_bf ** 2))
         
-        incertitude_aire_nette_bf = self.bruit_de_fond.incertitude_aire_nette
+        # incertitude_aire_nette_bf = self.bruit_de_fond.incertitude_aire_nette
+
+        # --------------
 
         ####Calcul taux de comptage:
-        taux_comptage_etalon = aire_nette_Etalon / temps_comptage_etalon
+        # taux_comptage_etalon = aire_nette_Etalon / temps_comptage_etalon
 
-        taux_comptage_prelevement = aire_nette_Prelevement / temps_comptage_prelevement
+        # taux_comptage_prelevement = aire_nette_Prelevement / temps_comptage_prelevement
+
+        # taux_comptage_bf = aire_nette_bf / temps_comptage_bf
+
+        # incertitude_taux_comptage_Etalon = incertitude_aire_nette_Etalon / temps_comptage_etalon
+
+        # incertitude_taux_comptage_Prelevement = incertitude_aire_nette_Prelevement / temps_comptage_prelevement
+        
+        # incertitude_taux_comptage_bf = incertitude_aire_nette_bf / temps_comptage_bf
+
+        taux_comptage_etalon = aire_nette_etalon / temps_comptage_etalon
+
+        taux_comptage_prelevement = aire_nette_prelevement / temps_comptage_prelevement
 
         taux_comptage_bf = aire_nette_bf / temps_comptage_bf
 
-        incertitude_taux_comptage_Etalon = incertitude_aire_nette_Etalon / temps_comptage_etalon
+        incertitude_taux_comptage_Etalon = incertitude_aire_nette_etalon / temps_comptage_etalon
 
-        incertitude_taux_comptage_Prelevement = incertitude_aire_nette_Prelevement / temps_comptage_prelevement
+        incertitude_taux_comptage_Prelevement = incertitude_aire_nette_prelevement / temps_comptage_prelevement
         
-        incertitude_taux_comptage_bf = incertitude_aire_nette_bf / temps_comptage_bf
+        incertitude_taux_comptage_bf = incertitude_aire_bf / temps_comptage_bf
+
 
         ###Valeure nette taux de comptage:
         taux_comptage_Etalon = taux_comptage_etalon - taux_comptage_bf

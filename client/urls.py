@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import create_client, delete_client, detail_client, update_client, list_clients
-from .api import ClientListCreateView, ClientRetrieveUpdateDestroyView
+from .api import ClientListCreateView, ClientRetrieveUpdateDestroyView, ClientDetailAnalysisDetails, ClientListAnalysisDetails
 
 app_name = 'client'
 
@@ -19,5 +19,15 @@ urlpatterns = [
         'api/<int:pk>',
         ClientRetrieveUpdateDestroyView.as_view(),
         name='client-retrieve-update-destroy'
+    ),
+    path(
+        'api/with-analyses-details',
+        ClientListAnalysisDetails.as_view(),
+        name='client-list-analyse-details'
+    ),
+    path(
+        'api/<int:pk>/analyse-details',
+        ClientDetailAnalysisDetails.as_view(),
+        name='client-detail-analyse-details'
     ),
 ]

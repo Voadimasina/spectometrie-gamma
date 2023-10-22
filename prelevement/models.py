@@ -3,7 +3,7 @@ from produit.models import Produit
 from models.mesure import Mesure
 
 class Prelevement(Mesure):
-    produit = models.ForeignKey(Produit, on_delete=models.CASCADE)
+    produit = models.OneToOneField(Produit, on_delete=models.CASCADE)
     masse = models.FloatField()
 
     def __str__(self):
